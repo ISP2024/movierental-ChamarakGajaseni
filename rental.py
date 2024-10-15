@@ -44,3 +44,13 @@ class Rental:
             log = logging.getLogger()
             log.error(f"Movie {self.get_movie()} has unrecognized priceCode {self.get_movie().get_price_code()}")
         return amount
+
+    def get_freq_renter_points(self, frequent_renter_points):
+        if self.get_movie().get_price_code() == Movie.NEW_RELEASE:
+                # New release earns 1 point per day rented
+            frequent_renter_points += self.get_days_rented()
+        else:
+                # Other rentals get only 1 point
+            frequent_renter_points += 1
+         
+        return frequent_renter_points
