@@ -13,7 +13,7 @@ class Customer:
     def __init__(self, name: str):
         """Initialize a new customer."""
         self.name = name
-        self.rentals = [Rental]
+        self.rentals = []
 
     def add_rental(self, rental: Rental):
         """Add a rental for this customer"""
