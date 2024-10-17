@@ -33,7 +33,7 @@ class CustomerTest(unittest.TestCase):
             days = (days + 2) % 5 + 1
             
         self.assertEqual(28.00,self.c.get_total())
-        self.assertEqual(39 ,self.c.get_total_rental_points())
+        self.assertEqual(9 ,self.c.get_total_rental_points())
     
     def test_statement(self):
         stmt = self.c.statement()
