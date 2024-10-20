@@ -59,7 +59,7 @@ class Customer:
         total_points = 0
         for rental in self.rentals:
             # compute the frequent renter points based on movie price code
-            total_points += rental.get_freq_renter_points()
+            total_points += rental.get_rental_points()
         return total_points
 
     def get_total(self):
