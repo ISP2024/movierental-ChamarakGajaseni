@@ -1,5 +1,6 @@
 import logging
 from movie import Movie
+from pricing import *
 
 class Rental:
     """
@@ -12,11 +13,16 @@ class Rental:
     For simplicity of this application only days_rented is recorded.
     """
     
-    def __init__(self, movie, days_rented): 
+    REGULAR = RegularPrice()
+    NEW_RELEASE = NewRelease()
+    CHILDRENS = ChildrensPrice()
+    
+    def __init__(self, movie, days_rented, price_code): 
        """Initialize a new movie rental object for
           a movie with known rental period (daysRented).
        """
        self.movie = movie
+       self.price_code = price_code
        self.days_rented = days_rented
 
     def get_movie(self):
@@ -25,8 +31,8 @@ class Rental:
     def get_days_rented(self):
        return self.days_rented
     
-    def get_price(self):
-        return self.movie.get_price(self.days_rented)
+    def get_price(self,days):
+         return self.price_code.get_price(days)
     
-    def get_rental_points(self):
-        return self.movie.get_rental_points(self.days_rented)
+    def get_rental_points(self, days):
+        return self.price_code.get_rental_points(days)

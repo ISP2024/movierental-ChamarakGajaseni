@@ -45,7 +45,7 @@ class Customer:
             statement += rental_fmt.format(
                             rental.get_movie().get_title(), 
                             rental.get_days_rented(), 
-                            rental.get_price())
+                            rental.get_price(rental.get_days_rented()))
             
         # footer: summary of charges
         statement += "\n"
@@ -59,8 +59,8 @@ class Customer:
         total_points = 0
         for rental in self.rentals:
             # compute the frequent renter points based on movie price code
-            total_points += rental.get_rental_points()
+            total_points += rental.get_rental_points(rental.get_days_rented())
         return total_points
 
     def get_total(self):
-        return sum(rental.get_price() for rental in self.rentals)
+        return sum(rental.get_price(rental.get_days_rented()) for rental in self.rentals)
